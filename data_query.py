@@ -4,7 +4,7 @@ import pandas as pd
 def connect_info():
     host_ = "127.0.0.1"
     user_ = "root"
-    password_ = "Dream&3733"
+    password_ = "nbsbest"
     return host_, user_, password_
 
 def get_table():
