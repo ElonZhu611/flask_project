@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <!-- Select table -->
+    <label for="table_label">Choose a table:</label>
+    <form action="" method="post">
+      <select class="form-control" name="table_name" id="table_id">
+          {% for table_name in table_names %}
+              <option value="{{ table_name }}">{{ table_name }}</option>
+          {% endfor %}
+      </select>
+    </form>
+    <!-- Generate button -->
+    <button type="button" onclick="gen_table()" value="gen_table()" name=gen_button>Generate</button>
+    <script language="javascript">
+      function gen_table() {
+        var table = document.getElementById("table_id").value;
+        alert('Table selected: ' + table);
+        return table
+      }
+    </script>
+
+    <p>
+    <!-- Select column to filter -->
+    <label for="filters">Choose a filter:</label>
+    <select class="form-control" name="cols" id="cols">
+        {% for col_name in col_names %}
+            <option value="{{ col_name }}">{{ col_name }}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <!-- Select operator -->
+    <select class="form-control" name="oprs" id="oprs">
+        {% for operator in operators %}
+            <option value="{{ operator }}">{{ operator }}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <!-- Input filter value -->
+    <label for="inputs">Input the value:</label>
+    <input type="text" id="filters_selected">
+    <br>
+    <!-- Add_filter button -->
+    <button type="button" onclick="add_filter()">add</button>
+    <!-- Delete_filter button -->
+    <button type="button" onclick="delete_filter()">delete</button>
+    <br>
+    <ul id="filter_list">
+      <li>car_year=2000</li>
+      <li>gender="Male"</li>
+    </ul>
+
+
+
+
+    </p>
+
+  </body>
+</html>
