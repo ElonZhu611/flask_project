@@ -24,11 +24,13 @@ def panel():
     table_names = data_query.get_table()
     operators = ["=", "!=", ">", "<", ">=", "<="]
 
-    col_names = data_query.get_all().columns
+    if request.method == 'GET':
+        col_names = data_query.get_all().columns
+    else:
+        table_name = request.form['table_name']
+        col_names = data_query.get_1(table_name).columns
 
     return render_template("panel.html", table_names=table_names, col_names=col_names, operators=operators)
-
-
 
 
 

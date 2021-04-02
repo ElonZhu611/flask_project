@@ -60,3 +60,19 @@ def get_filters(filters_clause, filters_count, aggFunc, aggCol, start_date, end_
     df_final = pd.DataFrame(data).reset_index()
 
     return df_final
+
+
+
+def get_1(table_name):
+    mydb = mysql.connector.connect(
+    	host = connect_info()[0],
+    	user = connect_info()[1],
+    	password = connect_info()[2]
+    )
+    mycursor = mydb.cursor(dictionary=True)
+    # get all data
+    mycursor.execute(f"SELECT * FROM new_schema.{table_name}")
+    data = mycursor.fetchall()
+    df_all = pd.DataFrame(data)
+    print(df_all)
+    return df_all
