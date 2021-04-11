@@ -5,6 +5,8 @@
     <title></title>
   </head>
   <body>
+
+
     <!-- Select table -->
     <label for="table_label">Choose a table:</label>
     <form action="" method="post">
@@ -15,32 +17,25 @@
       </select>
       <input class="btn btn-default" type="submit" value="Generate">
     </form>
-    <!-- Generate button -->
-    <button type="button" onclick="gen_table()" value="gen_table()" name=gen_button>Generate</button>
-    <script language="javascript">
-      function gen_table() {
-        var table = document.getElementById("table_id").value;
-        alert('Table selected: ' + table);
-        return table
-      }
-    </script>
+
 
     <p>
+    </br>
     <!-- Select column to filter -->
-    <label for="filters">Choose a filter:</label>
+    <label for="filters">Choose the filter column:</label>
     <select class="form-control" name="cols" id="cols">
         {% for col_name in col_names %}
             <option value="{{ col_name }}">{{ col_name }}</option>
         {% endfor %}
     </select>
-    <br>
+    </br>
     <!-- Select operator -->
     <select class="form-control" name="oprs" id="oprs">
         {% for operator in operators %}
             <option value="{{ operator }}">{{ operator }}</option>
         {% endfor %}
     </select>
-    <br>
+    </br>
     <!-- Input filter value -->
     <label for="inputs">Input the value:</label>
     <input type="text" id="filters_selected">
@@ -49,15 +44,38 @@
     <button type="button" onclick="add_filter()">add</button>
     <!-- Delete_filter button -->
     <button type="button" onclick="delete_filter()">delete</button>
-    <br>
-    <ul id="filter_list">
-      <li>car_year=2000</li>
-      <li>gender="Male"</li>
-    </ul>
+    </p>
 
 
-
-
+    <p>
+    </br>
+    <!-- Select column to group by -->
+    <label for="filters">Choose the group by column:</label>
+    <select class="form-control" name="cols" id="cols">
+        {% for col_name in col_names %}
+            <option value="{{ col_name }}">{{ col_name }}</option>
+        {% endfor %}
+    </select>
+    </br>
+    <!-- Select aggregate function -->
+    <select class="form-control" name="func" id="func">
+        {% for agg_func in agg_funcs %}
+            <option value="{{ agg_func }}">{{ agg_func }}</option>
+        {% endfor %}
+    </select>
+    </br>
+    <!-- Select column to be aggregated -->
+    <label for="agg_col">Choose the aggregated column:</label>
+    <select class="form-control" name="agg_col" id="agg_col">
+        {% for col_name in col_names %}
+            <option value="{{ col_name }}">{{ col_name }}</option>
+        {% endfor %}
+    </select>
+    </br>  
+    <!-- Add_filter button -->
+    <button type="button" onclick="add_func()">add</button>
+    <!-- Delete_filter button -->
+    <button type="button" onclick="delete_func()">delete</button>
     </p>
 
   </body>
