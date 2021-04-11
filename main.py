@@ -23,13 +23,13 @@ def login():
 def panel():
     table_names = data_query.get_table()
     operators = ["=", "!=", ">", "<", ">=", "<="]
-    agg_funcs = ["COUNT", "DISTINCT", "MIN", "MAX", "AVG", ]
+    agg_funcs = ["COUNT", "DISTINCT", "MIN", "MAX", "AVG"]
 
-    if request.method == 'GET':
-        col_names = data_query.get_all().columns
-    else:
+    if request.method == 'POST':
+#        col_names = data_query.get_all().columns
+#    else:
         table_name = request.form['table_name']
-        col_names = data_query.get_1(table_name).columns
+        col_names = data_query.get_columns(table_name)
 
     return render_template("panel.html", table_names=table_names, col_names=col_names, 
                            operators=operators, agg_funcs=agg_funcs)

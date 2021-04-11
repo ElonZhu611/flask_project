@@ -50,7 +50,7 @@
     <p>
     </br>
     <!-- Select column to group by -->
-    <label for="filters">Choose the group by column:</label>
+    <label for="group_col">Choose the group by column:</label>
     <select class="form-control" name="cols" id="cols">
         {% for col_name in col_names %}
             <option value="{{ col_name }}">{{ col_name }}</option>
@@ -77,6 +77,12 @@
     <!-- Delete_filter button -->
     <button type="button" onclick="delete_func()">delete</button>
     </p>
+
+    </br>
+    <p>
+      <input class="btn btn-default" type="submit" value="Query">
+    </p>
+
 
   </body>
 </html>

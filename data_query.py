@@ -63,7 +63,7 @@ def get_filters(filters_clause, filters_count, aggFunc, aggCol, start_date, end_
 
 
 
-def get_1(table_name):
+def get_columns(table_name):
     mydb = mysql.connector.connect(
     	host = connect_info()[0],
     	user = connect_info()[1],
@@ -73,6 +73,6 @@ def get_1(table_name):
     # get all data
     mycursor.execute(f"SELECT * FROM new_schema.{table_name}")
     data = mycursor.fetchall()
-    df_all = pd.DataFrame(data)
-    print(df_all)
-    return df_all
+    cols = pd.DataFrame(data).columns
+    # print(df_all)
+    return cols
